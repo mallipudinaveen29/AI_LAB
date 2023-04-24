@@ -1,4 +1,4 @@
-#Bi Directional Search
+#Bi_Directional_Search
 n=int(input("Enter the no of edges"))
 d=dict()
 for i in range(n):
@@ -15,22 +15,30 @@ for i in range(n):
 print(d)
 
 u=int(input("Enter the source node"))
-v=int(input("Enter the goal node"))def bfs(d,u,v):
+v=int(input("Enter the goal node"))
+
+
+
+def bfs(d,u,v):
     vis1=[u]
     vis2=[v]
     q1=[u]
     q2=[v]
-    while(len(q1)>0 or len(q2)>0):
+    while(len(q1)>0 and len(q2)>0):
         x=q1.pop(0)
         y=q2.pop(0)
-        if(x==y or x in vis2 or y in vis1):
+        if(x==y):
               return x
-        for i in d[u]:
+        if(x in vis2):
+            return x
+        if(y in vis1):
+            return y
+        for i in d[x]:
             print(i)
             if(i not in vis1):
                 vis1.append(i)
                 q1.append(i)
-        for i in d[v]:
+        for i in d[y]:
             print(i)
             if(i not in vis2):
                 vis2.append(i)
